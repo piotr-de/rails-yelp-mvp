@@ -8,10 +8,11 @@
 <p>
   <%= link_to "Edit", edit_restaurant_path(@restaurant) %> <%= link_to "Delete", restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %>
 </p>
-<h3>Reviews</h3>
+<h3>Add a review</h3>
 <p>
-  <%= link_to "Add a Review", new_restaurant_review_path(@restaurant) %>
+  <%= render "review_form", restaurant: @restaurant, review: Review.new %>
 </p>
+<h3>Reviews</h3>
 <% @restaurant.reviews.each do |review| %>
   <p><%= review.content %> <%= "⭐" * review.rating %></p>
 <% end %>
